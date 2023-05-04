@@ -1,0 +1,31 @@
+{% extends 'base1.html' %}
+
+{% load static %}
+{% block content %}
+
+<div class="wrapper" style="margin-top: 10px !important;">
+    <div class="primary-description" >
+        Trending
+    </div>
+    <div class="secondary-description">
+        Based on frequently searched items
+    </div>
+    <hr style="padding: 10px;">
+    <div class="trending-list">
+    <!-- Insert trends below -->
+    {% if search_list %}
+    {% for sear in search_list %}
+
+    
+        <div class="trending-field">
+            <div class="trending-card">
+                <a href="{% url 'search:trend' sear.pk %}"><h4>{{ sear.search_term | title }}</h4></a>
+            </div>
+        </div>
+    
+    {% endfor %}
+</div>
+    {% endif %}
+    
+</div>
+{% endblock %}

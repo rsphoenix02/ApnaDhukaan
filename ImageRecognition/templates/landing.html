@@ -1,0 +1,335 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        section .wave{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url("{% static 'img/wave.png' %}");
+            background-size: 1000px 100px;
+        }
+    </style>
+
+    <title>Apna Dhukaan</title>
+</head>
+
+<body>
+
+    <nav id="navbar-landing" class="navbar custom-dark navbar-expand-lg transparent navbar-inverse lnavbar">
+
+        <a class="navbar-brand ml-auto" href="{%url 'search:landing'%}">Apna Dhukaan</a>
+
+        <button class="navbar-toggler navbar-light ml-auto" type="button" data-toggle="collapse"
+            data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item current">
+                    <a class="nav-link" href="{%url 'search:landing'%}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'search:home' %}">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'search:trending' %}">Trending</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'search:search-bewakoof' %}">Term Search</a>
+                </li>
+            </ul>
+            {% if user.is_authenticated %}
+                <a href="{% url 'Dashboard:dashboard' %}" type="button" class="btn btn-primary glow-button ml-auto">Profile</a>
+            {% else %}
+            <a href="{% url 'accounts:login' %}" type="button" class="btn btn-secondary glow-button ml-auto">Login</a>
+            {% endif %}
+        </div>
+
+
+    </nav>
+
+    <section>
+        <div class="primary-description header">
+            Spend less time searching
+        </div>
+        <div class="secondary-description transparent-header">
+            <p>Connect with us and get personalised recommendations</p>
+        </div>
+
+        <div class="btn-wrapper">
+            <a class="btn light-button glow-light-button" href="{% url 'search:home' %}">
+                Get Started
+            </a>
+            <a class="btn light-button-2" href="{%url 'accounts:signup'%}">
+                Sign Up
+            </a>
+        </div>
+
+
+
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+    </section>
+
+
+    <!-- <div class="wrapper">
+
+        <div class="grid">
+            <div class="grid-element">
+                <ion-icon name="camera-reverse-outline" size="large"></ion-icon>
+                <h5 class="grid-primary">
+                    Reverse Image Search
+                </h5>
+                <p class="grid-secondary">Search for products using their pictures</p>
+            </div>
+            <div class="grid-element">
+                <ion-icon name="person-outline" size="large"></ion-icon>
+                <h5 class="grid-primary">
+                    Recommendations
+                </h5>
+                <p class="grid-secondary">Search for products using their pictures</p>
+            </div>
+            <div class="grid-element">
+                <ion-icon name="trending-up-outline" size="large"></ion-icon>
+                <h5 class="grid-primary">
+                    Top Trending Items
+                </h5>
+                <p class="grid-secondary">Search for products using their pictures</p>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="wrapper">
+        <div class="primary-description">
+            More than just a tool
+        </div>
+        <div class="secondary-description">
+            Explore what else we can do for you
+        </div>
+        <div class="container">
+            <div class="feature col-md-6 red">
+                <span class="circle">
+                    <ion-icon name="camera-reverse-outline" size="large"></ion-icon>
+                </span>
+                <h3>Reverse Image Search</h3>
+                <p>Search for products using their pictures. Apna Dhukaan uses multiple models for object detection and colour detection for better search results.</p>
+            </div>
+            <div class="feature col-md-6 blue">
+                <span class="circle">
+                    <ion-icon name="person-outline" size="large"></ion-icon>
+                </span>
+                <h3>Personalised Recommendations</h3>
+                <p>Get recommendations based on your favourite colour, clothing and search results.</p>
+            </div>
+            <div class="feature col-md-6 yellow">
+                <span class="circle">
+                    <ion-icon name="trending-up-outline" size="large"></ion-icon>
+                </span>
+                <h3>Top Trending Products</h3>
+                <p>Never miss out on the latest fashion trends!</p>
+            </div>
+            <div class="feature col-md-6 green">
+                <span class="circle">
+                    <ion-icon name="time-outline" size="large"></ion-icon>
+                </span>
+                <h3>Save Time</h3>
+                <p>Less time spent on searching means more time to spend on other things.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="primary-description">
+            Products from best online stores
+        </div>
+        <div class="secondary-description">
+            Never compromise on quality products
+        </div>
+
+        <div class="container">
+            <a href="{% url 'search:search-bewakoof' %}"><img src="{% static '/img/bewakoof-logo.png' %}" alt="" height="90"></a>
+            <a href="{% url 'search:search-limeroad' %}"><img src="{% static '/img/limeroad-logo.jpg' %}" alt="" height="120"></a>
+            <a href="{% url 'search:search-zobello' %}"><img src="{% static '/img/zobello-logo.png' %}" alt="" height="80"></a>
+            <!-- <a href="{% url 'search:search-random' %}"><img src="{% static '/img/koovs-logo.png' %}" alt="" height="40"></a> -->
+        </div>
+    </div>
+
+    <!-- <div class="wrapper" style="background-color: #000000; clip-path: polygon(0% 20%, 100% 0%, 100% 80%, 0% 100%);">
+        <div class="container-2">
+            <h4 class="white-description">Start searching!</h4>
+            <button class="btn light-button glow-light-button">
+                Get Started
+            </button>
+        </div>
+    </div> -->
+
+    <!-- <footer class="footer-distributed">
+
+        <div class="footer-left">
+
+            <h3>Product<span>Social</span></h3>
+
+            <p class="footer-links">
+                <a href="#">Home</a>
+                ·
+                <a href="#">Search</a>
+                ·
+                <a href="#">Trending</a>
+                ·
+                <a href="#">Search by term</a>
+            </p>
+
+            <p class="footer-company-name">Apna Dhukaan &copy; 2020</p>
+        </div>
+
+        <div class="footer-center">
+
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Zoom Call</span> Mumbai, India</p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+1 555 123456</p>
+            </div>
+
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@company.com">contact@apnadukaan.com</a></p>
+            </div>
+
+        </div>
+
+        <div class="footer-right">
+
+            <p class="footer-company-about">
+                <span>About the company</span>
+                Apna Dhukaan helps you search your clothing items byt using their photos and get personalised recommendations so that you spend less time looking for stuff!
+            </p>
+
+            <div class="footer-icons">
+
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-github"></i></a>
+
+            </div>
+
+        </div>
+
+    </footer> -->
+
+    <script type="text/javascript">
+
+        /* Sticky Navbar */
+        var nav = document.getElementById("navbar");
+        var landing = document.getElementById("navbar-landing");
+        var sticky;
+        if (nav != null) sticky = nav.offsetTop;
+        else sticky = landing.offsetTop;
+
+
+        window.onscroll = () => {
+            if (window.pageYOffset > sticky) {
+                if (nav != null) nav.classList.add("sticky");
+                else {
+                    landing.classList.add("sticky");
+                    landing.classList.add("custom-light");
+                    landing.classList.remove("custom-dark");
+                }
+            }
+            else {
+                if (nav != null) nav.classList.remove("sticky");
+                else {
+                    landing.classList.remove("sticky");
+                    landing.classList.add("custom-dark");
+                    landing.classList.remove("custom-light");
+                }
+            }
+        };
+
+        /* Login Signup */
+        function gotoSignUp() {
+            document.getElementById("sign-up").style.display = "inline";
+            document.getElementById("login").style.display = "none";
+        }
+
+        function gotoLogin() {
+            document.getElementById("sign-up").style.display = "none";
+            document.getElementById("login").style.display = "inline";
+        }
+
+
+    /* Sticky Navbar */
+    var nav = document.getElementById("navbar");
+    var landing = document.getElementById("navbar-landing");
+    var sticky;
+    if(nav != null) sticky = nav.offsetTop;
+    else sticky = landing.offsetTop;
+
+
+    window.onscroll = () => {
+        if (window.pageYOffset > sticky) {
+            if(nav != null) nav.classList.add("sticky");
+            else {
+                landing.classList.add("sticky");
+                landing.classList.add("custom-light");
+                landing.classList.remove("custom-dark");
+            }
+        }
+        else {
+            if(nav != null) nav.classList.remove("sticky");
+            else {
+                landing.classList.remove("sticky");
+                landing.classList.add("custom-dark");
+                landing.classList.remove("custom-light");
+            }
+        }
+    };
+
+    /* Login Signup */
+    function gotoSignUp() {
+        document.getElementById("sign-up").style.display = "inline";
+        document.getElementById("login").style.display = "none";
+    }
+
+    function gotoLogin() {
+        document.getElementById("sign-up").style.display = "none";
+        document.getElementById("login").style.display = "inline";
+    }
+
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+</body>
+
+</html>
