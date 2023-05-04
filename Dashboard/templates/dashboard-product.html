@@ -1,0 +1,72 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+    <div class="sidebar">
+        <img class="profile" src="https://demos.creative-tim.com/bs3/material-kit-pro/assets/img/placeholder.jpg" alt="" height="80" width="80">
+        {% if user.is_authenticated %}
+            <p>Welcome, {{user.first_name | title}}!</p>
+        {% else %}
+            <p>Welcome, Stranger!</p>
+        {% endif %}
+        <a href="{% url 'Dashboard:dashboard' %}" class="">Recently Searched</a>
+        {% if user.customer.favourite_color == 'red' %}
+        <a href="{% url 'Dashboard:red' %}" class="">Recommendations</a>
+        {% elif user.customer.favourite_color == 'blue' %}
+        <a href="{% url 'Dashboard:blue' %}" class="">Recommendations</a>
+        {% elif user.customer.favourite_color == 'green' %}
+        <a href="{% url 'Dashboard:green' %}" class="">Recommendations</a>
+        {% elif user.customer.favourite_color == 'black' %}
+        <a href="{% url 'Dashboard:shorts' %}" class="">Recommendations</a>
+        {% elif user.customer.favourite_color == 'white' %}
+        <a href="{% url 'Dashboard:white' %}" class="">Recommendations</a>
+        {% elif user.customer.favourite_color == 'yellow' %}
+        <a href="{% url 'Dashboard:yellow' %}" class="">Recommendations</a>
+        {%endif%}
+        <a href="#" class="active">Suggestions</a>
+    </div>
+
+    {% if not user.is_authenticated %}
+    <div class="content">
+        <h2>Please Login to get Recommendations</h2>
+    </div>
+    {% else %}
+
+    <div class="content">
+        <h2>You might also like!</h2>
+        <hr>
+        <div class="info-message">
+            {% if search %}
+            We Know Your Choice Of Clothing is {{ search | title}}. Choose Your Color.
+            {% else %}
+            We Know Your Choice Of Clothing is {{ user.customer.favourite_color | title}}. Choose Your Product.
+            {% endif %}
+        </div>
+        <div class="colour-select">
+            <a href="{% url 'Dashboard:shirt' %}"><button class="rec-colors" style="background-color: white; font-weight: bolder;">Shirt</button></a>
+            <a href="{% url 'Dashboard:jeans' %}"><button class="rec-colors" style="background-color: white; font-weight: bolder;">Jeans</button></a>
+            <a href="{% url 'Dashboard:shorts' %}"><button class="rec-colors" style="background-color: white; font-weight: bolder;">Shorts</button></a>
+            <a href="{% url 'Dashboard:shoes' %}"><button class="rec-colors" style="background-color:white; font-weight: bolder;">Shoes</button></a>
+            <ion-icon name="sync-circle-outline" size="large" style="margin-top: 10px;"></ion-icon>
+        </div>
+        <hr>
+        <div class="products-found">
+            <!-- Insert product cards here! -->
+            {% if listings %}
+            {% for post in listings %}
+            <div class="card" style="width: 18rem">
+                <img src="{{ post.2 }}" alt="" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{post.0}}</h5>
+                    <div class="container">
+                        <h5>{{ post.1 }}</h5>
+                        <a href="{{ post.3 }}" class="btn btn-primary glow-button">Visit Store</a>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
