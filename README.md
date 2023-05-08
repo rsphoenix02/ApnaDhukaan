@@ -3,21 +3,33 @@ An Ecommerce product aggregator website.This is a price comparison website that 
 
 
 **Tech Stack**
+
 The website is built using the following tech stack:
+
 Programming Language: Python
+
 Web Framework: Django
+
 Database: SQLite3
+
 Frontend: HTML, CSS, and JavaScript
+
 Price Comparison: Python script using Beautiful Soup and Requests libraries to scrape product information and prices from Amazon and Flipkart.
 
 How to Run the Project
+
 To run the project, follow these steps:
 
 1)Clone the repository to your local machine.
+
 2)Create a virtual environment.
+
 3)Install the project requirements using the command pip install -r requirements.txt.
+
 4)un the migrations using the command python manage.py migrate.
+
 5)Start the server using the command python manage.py runserver.
+
 After following these steps, you should be able to access the website on your local machine.
 
 Contributing
