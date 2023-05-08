@@ -6,17 +6,17 @@ An Ecommerce product aggregator website.This is a price comparison website that 
 
 The website is built using the following tech stack:
 
-Programming Language: Python
+**Programming Language**: Python
 
-Web Framework: Django
+**Web Framework**: Django
 
-Database: SQLite3
+**Database**: SQLite3
 
-Frontend: HTML, CSS, and JavaScript
+**Frontend**: HTML, CSS, and JavaScript
 
-Price Comparison: Python script using Beautiful Soup and Requests libraries to scrape product information and prices from Amazon and Flipkart.
+**Price Comparison**: Python script using Beautiful Soup and Requests libraries to scrape product information and prices from Amazon and Flipkart.
 
-How to Run the Project
+**How to Run the Project**
 
 To run the project, follow these steps:
 
